@@ -12,5 +12,5 @@
  agravo <- unique(inicio$doenca)
  area_tec <- unique(inicio$area_tecnica)
 
- rm(inicio)
+ 
  

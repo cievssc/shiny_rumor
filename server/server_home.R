@@ -1,6 +1,6 @@
   #server para a aba home (07-fev-2023, 16:18h)
   
-   dados_inicio <- dado
+   #dados_inicio <- dado
   
   #opções botões dropdown (18-nov-2022,10:24h)
    output$home_dropopcoes <- renderUI(
@@ -27,7 +27,7 @@
   output$head_datas <- renderUI(
                          dateRangeInput('home_daterange',
                                   label = h5('Período dos registros'),
-                                  start = min(dado$data_noticia, na.rm = T), end = max(dado$data_noticia, na.rm = T),
+                                  start = min(inicio$data_noticia, na.rm = T), end = max(inicio$data_noticia, na.rm = T),
                                   separator = " - ", format = "dd/mm/yyyy",
                                   language = 'pt-br'
                                    )       
