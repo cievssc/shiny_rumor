@@ -1,6 +1,6 @@
  #app 
  ui <-  tabler_page(dark = F,
-   header_tabler(logo = HTML('<img src="./images/cievs_png_red.png" width="232px" height="110" alt="Tabler" class="navbar-brand-image">'),
+   header_tabler(logo = HTML('<img src="./images/cievs_nacional.png" width="332px" height="210" alt="Tabler" class="navbar-brand-image">'),
                tags$link(rel = "stylesheet",type = 'text/css', href = './css/legenda_leaflet.css'), 
                tags$div( class =  "navbar-nav flex-row order-md-last", 
                  tags$div(class = "nav-item d-none d-md-flex me-3",
