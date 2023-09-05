@@ -34,9 +34,10 @@
                                 )
  
   #organizando os dados
+  #TODO deixar as informações melhor reativas (05-set-2023, 13:40h)
   dados_all <- eventReactive(input$head_atualizar,{
-                 dadoi <- dados_inicio
-                 dadoi <- dplyr::left_join(dadoi, centroide, by = c('pais'))
+                 dadoi <-  DBI::dbGetQuery(conn(), 'SELECT * FROM rumores_evento')
+                 dadoi <- dplyr::left_join(dadoi, centroide, by = c('pais'),na_matches = "never")
                                                                    
                  
                  if(!is.null(input$home_daterange)){
@@ -59,14 +60,16 @@
   
   
    dados_analise <- reactiveVal(0)
+
    
   
   observeEvent(c( input$head_atualizar),{ #input$home_atualizar,
                      req(!is.null(dados_all()))
                      dadoi <- dados_all()
-                     if(input$home_dropdown >0){
+                     
+                     if(input$home_dropdown[1] > 0){
                      if(!any(input$home_uf == 'Todos')){
-                        dadoi <- dadoi[(dadoi$uf %in% input$uf),]
+                        dadoi <- dadoi[(dadoi$uf %in% input$home_uf),]
                         }
                      if(!any(input$home_doenca == 'Todos')){
                         dadoi <- dadoi[(dadoi$doenca %in% input$home_doenca),]
@@ -301,7 +304,7 @@
                    tagList(
                      div(class = 'card',
                        div(class = 'card-header',
-                           h1(class = 'card-title', 'Agravos e doenças')),
+                           h1(class = 'card-title', 'Unidade Federativa')),
                             div(class = 'body',
                       apexchartOutput('home_uf_chart', height = '250px')))
                              ) #end taglist

@@ -8,6 +8,7 @@
                                 uiOutput('home_dropopcoes'), left = T))),
        tags$div(class = 'page-body',
         fluidRow(class = 'row row-deck row-cards',
+        verbatimTextOutput('teste'),
              column(4,
                fluidRow(class = 'row row-deck row-cards',
                   mod_summary_card_ui('home_total', div_class = "col-md-12"),

@@ -40,7 +40,7 @@
  load('municipiopoly.RData')
  load('centroide.RData')
  #dados iniciais
- load('dado_dash.RData')
+ #load('dado_dash.RData')
 
  
  
@@ -58,4 +58,4 @@
  source('./www/tablerdash/funcoes_dashboard.R')
  source('./www/tablerdash/cards.R')
  source('./www/tablerdash/icons.R')
- 
+
