@@ -377,7 +377,8 @@
                     tags$div(class = 'card-header',
                     h1('Tabela')),
                     tags$div(class = 'card-body',
-                    tableOutput('home_tabela1')
+                    #tableOutput('home_tabela1')
+                    reactableOutput('home_tabela1')
                     ),
                     tags$div(class = 'card-footer',
                        tags$div(class = "ms-auto lh-1",
@@ -386,13 +387,14 @@
                     )  
   
                    
-  output$home_tabela1 <- renderText({  #DT::renderDataTable({#
+  output$home_tabela1 <- renderReactable({ #renderText({  #DT::renderDataTable({#
                            dadoi <- dados_analise()
                            dadoi <- dadoi[,c(2,1,3,7,5,8,9,10)]
-                           
-                           kbl(dadoi) %>%
-                           kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
-                           scroll_box(width = "100%", height = "480px")
+                           names(dadoi) <- c('Id','SE','Data notícia','Doença/Agravo','Descrição','Notificação\nImediata?','Área técnica','Fonte')
+                           reactable(dadoi,searchable = TRUE)
+                           #kbl(dadoi) %>%
+                           #kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
+                           #scroll_box(width = "100%", height = "480px")
                             }) 
  
  output$download_tabela1 <- downloadHandler(

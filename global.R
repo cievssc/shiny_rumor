@@ -26,7 +26,8 @@
  #library('dygraphs')
  #library('highcharter')
  #library('ggplot2')
- library('formattable') #tabelas personalizadas
+ #library('formattable') #tabelas personalizadas
+ library('reactable')
  
  #para predições
 # library('forecast')
