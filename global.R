@@ -28,7 +28,10 @@
  #library('ggplot2')
  #library('formattable') #tabelas personalizadas
  library('reactable')
- 
+ library('wordcloud2') #nuvem de palavras (add 14-set-2023)
+ library('tm') #funções para contagem de palavras
+ library('tidytext') #organizar textos
+
  #para predições
 # library('forecast')
  

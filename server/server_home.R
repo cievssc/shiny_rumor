@@ -369,6 +369,49 @@
                                               legend = c(show = FALSE)
                                               )
                                      })  #end renderapex  
+
+ #==========================================
+ #nuvem de palavras (add em 14-set-2023)
+
+ mod_summary_card_server('home_nuvem',
+                      tags$div(class = 'card',
+                    #tags$div(class = 'card-header',
+                    #h1('Tabela')),
+                    tags$div(class = 'card-body',
+                    #tableOutput('home_tabela1')
+                    wordcloud2Output('home_nuvem_output')
+                    )        )
+                    
+                    ) #end summary
+
+  output$home_nuvem_output <- renderWordcloud2({
+              dadoi <- dados_analise()
+              dadoi <- dadoi %>%
+  #as.tibble() %>% 
+  dplyr::select(descricao) %>% 
+  unnest_tokens(Palavra, descricao) %>% 
+  mutate(Palavra = NormalizaParaTextMining(Palavra)) %>% 
+  anti_join(palavrasRemover) %>% 
+  anti_join(palavrasRemover_ii) %>%
+  count(Palavra, sort = TRUE) %>% 
+  filter(Palavra != "")
+
+  
+my_palette = c("#355070",
+               "#6d597a",
+               "#b56576",
+               "#e56b6f",
+               "#eaac8b")
+
+wordcloud2(dadoi,
+  color = rep_len(my_palette,
+                  nrow(dadoi)
+),minSize = 2)
+
+
+  }) #end wordcloud     
+                    
+
  
  #==========================================
  #tabelas

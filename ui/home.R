@@ -23,6 +23,7 @@
                   mod_summary_card_ui('home_notificacao', div_class = 'col-md-4'),
                   mod_summary_card_ui('home_uf', div_class = 'col-md-4'),
                   mod_summary_card_ui('home_fonte', div_class = 'col-md-4'),
+                  mod_summary_card_ui('home_nuvem', div_class = 'col-md-12'),
                   mod_summary_card_ui('home_tabela1ui', div_class = "col-md-12")
                    
                   )#end row
